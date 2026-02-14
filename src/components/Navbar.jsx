@@ -6,7 +6,7 @@ function Navbar() {
     <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 px-4 py-3 flex items-center justify-between shadow-sm transition-colors">
       {/* Change Logo */}
       <Link to="/" className="flex items-center gap-2">
-        <div className="w-12 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+        <div className="w-14 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
           <span className="text-white font-bold text-xl">Kegz</span>
         </div>
         <span className="text-xl font-extrabold text-gray-800 dark:text-white">

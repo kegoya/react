@@ -1,3 +1,5 @@
+import ThemeToggle from "./ThemeToggle";
+
 function Navbar() {
   return (
     <nav className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between shadow-sm">
@@ -26,7 +28,7 @@ function Navbar() {
 
       {/* Action Button */}
       <button className="bg-blue-600 text-white px-5 py-2 rounded-md font-semibold hover:bg-blue-700 transition-all shadow-md active:scale-95">
-        Get Started
+        <ThemeToggle /> Get Started
       </button>
     </nav>
   );

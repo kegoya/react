@@ -1,37 +1,44 @@
-import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import Features from "./components/Features";
+import { Route, Routes } from "react-router-dom";
 import Contact from "./components/Contact";
-import Projects from "./components/Projects"; // Import the new file
-
-// Let's create a quick "Projects" page component right here for now
+import Features from "./components/Features";
+import Footer from "./components/Footer";
+import NavbarIcon from "./components/NavbarIcon";
+import SettingsMenu from "./components/SettingsMenu";
+import { ThemeProvider } from "./context/ThemeContext"; // 1. Import the Provider
+import Hero from "./pages/Hero";
+import Projects from "./pages/Projects";
 
 function App() {
+  // 2. We DELETED the local useEffect here.
+  // ThemeContext now handles the .dark class and [data-theme] automatically.
+
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
-      <Navbar />
+    <ThemeProvider>
+      {" "}
+      {/* 3. Wrap everything here */}
+      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-500 ease-in-out selection:bg-brand selection:text-white">
+        <NavbarIcon />
 
-      <Routes>
-        {/* The "Home" path shows Hero, Features, and Contact */}
-        <Route
-          path="/"
-          element={
-            <>
-              <Hero />
-              <Features />
-              <Contact />
-            </>
-          }
-        />
+        <main className="transition-opacity duration-300">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Hero />
+                  <Features />
+                  <Contact />
+                </>
+              }
+            />
+            <Route path="/projects" element={<Projects />} />
+          </Routes>
+        </main>
 
-        {/* The "Projects" path shows only the Projects component */}
-        <Route path="/projects" element={<Projects />} />
-      </Routes>
-
-      <Footer />
-    </div>
+        <Footer />
+        <SettingsMenu />
+      </div>
+    </ThemeProvider>
   );
 }
 

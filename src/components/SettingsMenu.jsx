@@ -41,12 +41,14 @@ export default function SettingsMenu() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 bg-brand text-white rounded-full shadow-2xl flex items-center justify-center border-4 border-white dark:border-gray-800 transition-colors"
+        /* Border updated to match primary/secondary backgrounds */
+        className="w-14 h-14 bg-brand text-white rounded-full shadow-2xl flex items-center justify-center border-4 border-primary dark:border-secondary transition-colors cursor-pointer"
       >
         {isOpen ? (
           <X size={28} />
         ) : (
-          <Settings size={28} className="animate-[spin_8s_linear_infinite]" />
+          /* Using your custom spin-slow utility from @theme */
+          <Settings size={28} className="animate-spin-slow" />
         )}
       </motion.button>
 
@@ -57,29 +59,29 @@ export default function SettingsMenu() {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: -20, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="absolute bottom-16 right-0 w-64 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 p-6 overflow-hidden"
+            /* bg-tertiary is your specific color for Menus/Toggles */
+            className="absolute bottom-16 right-0 w-64 bg-primary dark:bg-tertiary rounded-3xl shadow-2xl border border-textsecondary/10 p-6 overflow-hidden"
           >
-            <div className="flex items-center gap-2 mb-6 text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-700 pb-4">
+            <div className="flex items-center gap-2 mb-6 text-textmain dark:text-textprimary border-b border-textsecondary/10 pb-4">
               <Palette size={20} className="text-brand" />
               <h3 className="font-bold text-lg">Appearance</h3>
             </div>
 
             <div className="space-y-3">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+              <p className="text-xs font-semibold text-textsecondary uppercase tracking-wider">
                 Theme Color
               </p>
               <div className="grid grid-cols-2 gap-3">
                 {themes.map((t) => (
                   <button
                     key={t.id}
-                    // 4. Update the shared context instantly
                     onClick={() => setColorTheme(t.id)}
-                    className={`group relative flex flex-col items-center gap-2 p-3 rounded-2xl transition-all border-2
-                      ${
-                        colorTheme === t.id
-                          ? "border-brand bg-brand/5"
-                          : "border-gray-100 dark:border-gray-700 hover:border-brand/50"
-                      }`}
+                    className={`group relative flex flex-col items-center gap-2 p-3 rounded-2xl transition-all border-2 cursor-pointer
+                  ${
+                    colorTheme === t.id
+                      ? "border-brand bg-brand-soft"
+                      : "border-textsecondary/10 hover:border-brand/50"
+                  }`}
                   >
                     <div
                       className="w-8 h-8 rounded-full shadow-inner flex items-center justify-center"
@@ -89,7 +91,7 @@ export default function SettingsMenu() {
                         <Check size={16} className="text-white" />
                       )}
                     </div>
-                    <span className="text-[10px] font-medium text-gray-600 dark:text-gray-300">
+                    <span className="text-[10px] font-medium text-textmain dark:text-textsecondary">
                       {t.name}
                     </span>
                   </button>
@@ -97,7 +99,7 @@ export default function SettingsMenu() {
               </div>
             </div>
 
-            <p className="mt-6 text-center text-[10px] text-gray-400">
+            <p className="mt-6 text-center text-[10px] text-textsecondary">
               Changes apply instantly to all sections.
             </p>
           </motion.div>

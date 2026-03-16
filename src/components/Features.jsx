@@ -30,35 +30,36 @@ const featureList = [
 
 export default function Features() {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
-      <div className="max-w-450 mx-auto px-6">
+    /* Section Background: Using bg-tertiary/30 for a subtle contrast from the main body */
+    <section className="py-20 bg-primary dark:bg-tertiary/20 transition-colors duration-500">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+          <h2 className="text-3xl font-bold text-textmain dark:text-textprimary sm:text-4xl animate-fade-in-up">
             Everything you need to scale
           </h2>
-          <p className="mt-4 text-gray-600 dark:text-gray-400">
+          <p className="mt-4 text-textsecondary">
             High-performance features designed for the modern web.
           </p>
         </div>
 
-        {/* Updated Grid: 4 columns to match your 4 feature list items */}
-        {/* 1. hover:border-brand -> Card border glows with theme color */}
+        {/* Grid: 4 columns with themed card interactions */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {featureList.map((item, index) => (
             <div
               key={index}
-              className="p-8 bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-brand transition-all group cursor-default"
+              /* Cards: bg-primary (Light) | bg-secondary (Dark) */
+              className="p-8 bg-primary dark:bg-secondary rounded-2xl shadow-sm border border-textsecondary/10 hover:border-brand/50 transition-all group cursor-default"
             >
-              {/* 2. group-hover:bg-brand-soft -> Icon box tints with theme on hover */}
-              <div className="mb-4 p-3 bg-gray-50 dark:bg-gray-800 w-fit rounded-xl group-hover:bg-brand-soft group-hover:scale-110 transition-all duration-300">
+              {/* Icon Box: group-hover:bg-brand-soft tints with theme on hover */}
+              <div className="mb-4 p-3 bg-tertiary/10 dark:bg-tertiary w-fit rounded-xl group-hover:bg-brand-soft group-hover:scale-110 transition-all duration-300 text-brand">
                 {item.icon}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+
+              <h3 className="text-xl font-bold text-textmain dark:text-textprimary mb-2">
                 {item.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                {item.desc}
-              </p>
+
+              <p className="text-textsecondary leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>

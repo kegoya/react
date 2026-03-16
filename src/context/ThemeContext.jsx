@@ -12,18 +12,28 @@ export const ThemeProvider = ({ children }) => {
 
   useEffect(() => {
     const root = window.document.documentElement;
-    // Apply Brand Color
-    if (colorTheme === "default") root.removeAttribute("data-theme");
-    else root.setAttribute("data-theme", colorTheme);
-    localStorage.setItem("user-color-brand", colorTheme);
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-    // Apply Dark/Light Mode
-    const isDark =
-      theme === "dark" ||
-      (theme === "system" &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
-    root.classList.toggle("dark", isDark);
-    localStorage.setItem("theme", theme);
+    const applyTheme = () => {
+      // Brand Color Logic
+      if (colorTheme === "default") root.removeAttribute("data-theme");
+      else root.setAttribute("data-theme", colorTheme);
+      localStorage.setItem("user-color-brand", colorTheme);
+
+      // Dark/Light Logic
+      const isDark =
+        theme === "dark" || (theme === "system" && mediaQuery.matches);
+      root.classList.toggle("dark", isDark);
+      localStorage.setItem("theme", theme);
+    };
+
+    applyTheme();
+
+    // Listen for system changes if mode is 'system'
+    if (theme === "system") {
+      mediaQuery.addEventListener("change", applyTheme);
+      return () => mediaQuery.removeEventListener("change", applyTheme);
+    }
   }, [colorTheme, theme]);
 
   return (

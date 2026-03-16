@@ -43,14 +43,16 @@ export default function Projects() {
   });
 
   if (error)
-    return <div className="text-center py-20 dark:text-white">{error}</div>;
+    return (
+      <div className="text-center py-20 dark:text-textprimary">{error}</div>
+    );
 
   return (
     <div className="min-h-screen py-24 bg-gray-50 dark:bg-gray-900 transition-colors overflow-hidden">
       <div className="max-w-450 mx-auto px-6">
         {/* 1. Header Animation */}
         <header className="mb-12 animate-fade-in-up">
-          <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white">
+          <h1 className="text-4xl font-extrabold text-gray-900 dark:text-textprimary">
             My Repositories
           </h1>
 

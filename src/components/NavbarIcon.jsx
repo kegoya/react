@@ -15,7 +15,8 @@ function NavbarIcon() {
   );
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+    <nav className="sticky top-0 z-50 bg-primary/80 dark:bg-secondary/80 backdrop-blur-md border-b border-textsecondary/10">
+      {/* Changed max-w-450 to max-w-7xl so the navbar has room to expand */}
       <div className="max-w-450 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* 1. LOGO */}
@@ -23,13 +24,13 @@ function NavbarIcon() {
             <div className="w-10 h-10 bg-brand rounded-xl flex items-center justify-center shadow-lg shadow-brand/20 group-hover:scale-105 transition-transform">
               <span className="text-white font-black text-xl">K</span>
             </div>
-            <span className="text-xl font-black tracking-tight text-gray-900 dark:text-white hidden sm:inline-block">
+            <span className="text-xl font-black tracking-tight text-textmain dark:text-textprimary hidden sm:inline-block">
               Kegz<span className="text-brand">.git</span>
             </span>
           </Link>
 
           {/* 2. DESKTOP NAVIGATION (Center) */}
-          <div className="hidden md:flex items-center space-x-10">
+          <div className="hidden md:flex items-center space-x-10 font-semibold text-textmain dark:text-textprimary">
             <NavLink to="/" className={navLinkStyles}>
               {({ isActive }) => <>Home {isActive && <ActiveDot />}</>}
             </NavLink>
@@ -43,8 +44,7 @@ function NavbarIcon() {
 
           {/* 3. SHARED ACTION AREA (Right Side) */}
           <div className="flex items-center gap-4 md:gap-8">
-            {/* MOBILE ONLY NAVIGATION ICONS */}
-            <div className="md:hidden flex items-center gap-7">
+            <div className="md:hidden flex items-center gap-7 text-textmain dark:text-textprimary">
               <NavLink to="/" className={navLinkStyles}>
                 {({ isActive }) => (
                   <>
@@ -68,10 +68,8 @@ function NavbarIcon() {
               </NavLink>
             </div>
 
-            {/* SEPARATOR (Hidden on Mobile, shows on Desktop) */}
-            <div className="hidden md:block w-px h-6 bg-gray-200 dark:bg-gray-800" />
-
-            {/* THE TOGGLE (Always visible because it's not inside md:hidden) */}
+            {/* SEPARATOR - Uses textsecondary with low opacity */}
+            <div className="hidden md:block w-px h-6 bg-textsecondary/20" />
 
             <ThemeToggle />
           </div>

@@ -7,51 +7,49 @@ export default function Footer() {
   return (
     <footer
       id="main-footer"
-      className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors"
+      /* bg-primary (Light) | dark:bg-secondary (Dark) */
+      className="bg-primary dark:bg-secondary border-t border-textsecondary/10 transition-colors duration-500"
     >
       <div className="max-w-450 mx-auto px-6 py-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          {/* Brand Part: Uses 'bg-brand' and 'text-brand' */}
+          {/* Brand Part */}
           <div className="flex flex-col items-center md:items-start gap-2">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-brand rounded-lg flex items-center justify-center shadow-lg shadow-brand/20">
                 <span className="text-white font-bold text-sm">K</span>
               </div>
-              <span className="text-lg font-bold text-gray-900 dark:text-white tracking-tight">
+              <span className="text-lg font-bold text-textmain dark:text-textprimary tracking-tight">
                 Kegz<span className="text-brand">.dev</span>
               </span>
             </div>
-            <p className="text-sm text-gray-500 dark:text-gray-400 text-center md:text-left">
+            <p className="text-sm text-textsecondary text-center md:text-left">
               Building the future of open source,{" "}
               <br className="hidden md:block" /> one repository at a time.
             </p>
           </div>
 
-          {/* Social & Links: Updated hover states to 'text-brand' */}
+          {/* Social & Links */}
           <div className="flex flex-col items-center md:items-end gap-6">
             <div className="flex gap-5">
-              <a
-                href="https://github.com"
-                target="_blank"
-                className="p-2 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:text-brand hover:border-brand/30 hover:shadow-md transition-all"
-              >
-                <Github size={18} />
-              </a>
-              <a
-                href="#"
-                className="p-2 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:text-brand hover:border-brand/30 hover:shadow-md transition-all"
-              >
-                <Twitter size={18} />
-              </a>
-              <a
-                href="#"
-                className="p-2 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:text-brand hover:border-brand/30 hover:shadow-md transition-all"
-              >
-                <Linkedin size={18} />
-              </a>
+              {[
+                { icon: <Github size={18} />, href: "https://github.com" },
+                { icon: <Twitter size={18} />, href: "#" },
+                { icon: <Linkedin size={18} />, href: "#" },
+              ].map((social, idx) => (
+                <a
+                  key={idx}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  /* bg-primary/secondary & border-textsecondary/10 */
+                  className="p-2 rounded-full bg-primary dark:bg-tertiary border border-textsecondary/20 text-textsecondary hover:text-brand hover:border-brand/30 hover:shadow-md transition-all cursor-pointer"
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
 
-            <div className="flex gap-6 text-sm font-medium text-gray-700 dark:text-gray-400">
+            <div className="flex gap-6 text-sm font-medium text-textmain dark:text-textsecondary">
               <Link
                 to="/privacy"
                 className="hover:text-brand transition-colors"
@@ -66,8 +64,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-200/60 dark:border-gray-800/60 text-center text-xs dark:text-gray-400 text-gray-900 uppercase tracking-widest">
-          © {currentYear} Kegz Dev — Crafted with React & Tailwind
+        <div className="mt-12 pt-8 border-t border-textsecondary/10 text-center text-xs text-textsecondary uppercase tracking-widest">
+          © {new Date().getFullYear()} Kegz Dev — Crafted with React & Tailwind
         </div>
       </div>
     </footer>

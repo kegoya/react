@@ -4,9 +4,36 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>react</title>
+    <title>React App</title>
+
+    <!-- ⚡ Anti-Flash Theme Script ⚡ -->
+    <script>
+      (function () {
+        try {
+          // 1. Check for Dark Mode
+          const theme = localStorage.getItem("theme");
+          const supportDarkMode = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+
+          if (theme === "dark" || (theme === "system" && supportDarkMode)) {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+
+          // 2. Check for Color Brand (Sunset, Midnight, etc.)
+          const colorBrand = localStorage.getItem("user-color-brand");
+          if (colorBrand && colorBrand !== "default") {
+            document.documentElement.setAttribute("data-theme", colorBrand);
+          }
+        } catch (e) {
+          console.error("Theme script failed", e);
+        }
+      })();
+    </script>
   </head>
-  <body>
+  <body class="bg-white dark:bg-slate-900 transition-colors duration-500">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

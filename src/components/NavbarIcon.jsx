@@ -1,8 +1,13 @@
 import { Briefcase, House, User } from "lucide-react";
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import UserMenu from "./auth/UserMenu"; // Use the correct path to the file you just created
 import ThemeToggle from "./ThemeToggle";
 
 function NavbarIcon() {
+  // In NavbarIcon.jsx
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Temporary for testing
+
   const navLinkStyles = ({ isActive }) =>
     `relative flex flex-col items-center gap-1 transition-colors duration-200 ${
       isActive
@@ -69,9 +74,54 @@ function NavbarIcon() {
             </div>
 
             {/* SEPARATOR - Uses textsecondary with low opacity */}
-            <div className="hidden md:block w-px h-6 bg-textsecondary/20" />
+            {/* 3. SHARED ACTION AREA (Right Side) */}
+            {/* 3. SHARED ACTION AREA (Right Side) */}
+            <div className="flex items-center gap-3 sm:gap-6 md:gap-8">
+              {/* Mobile Nav Icons (Home, Projects, About) */}
+              <div className="md:hidden flex items-center gap-5 sm:gap-7 text-textmain dark:text-textprimary">
+                <NavLink to="/" className={navLinkStyles}>
+                  {({ isActive }) => (
+                    <>
+                      <House size={20} /> {isActive && <ActiveDot />}
+                    </>
+                  )}
+                </NavLink>
+                <NavLink to="/projects" className={navLinkStyles}>
+                  {({ isActive }) => (
+                    <>
+                      <Briefcase size={20} /> {isActive && <ActiveDot />}
+                    </>
+                  )}
+                </NavLink>
+                <NavLink to="/about" className={navLinkStyles}>
+                  {({ isActive }) => (
+                    <>
+                      <User size={22} /> {isActive && <ActiveDot />}
+                    </>
+                  )}
+                </NavLink>
+              </div>
 
-            <ThemeToggle />
+              {/* Auth Toggle Logic - Removed 'hidden md:block' */}
+              <div className="flex items-center">
+                {isLoggedIn ? (
+                  <UserMenu />
+                ) : (
+                  <Link
+                    to="/auth"
+                    /* Changed: Removed 'hidden md:block', added responsive padding 'px-3 sm:px-5' */
+                    className="px-4 py-2 bg-brand text-white text-xs sm:text-sm font-bold rounded-xl hover:bg-brand-hover shadow-lg shadow-brand/20 transition-all active:scale-95 cursor-pointer whitespace-nowrap"
+                  >
+                    Sign In
+                  </Link>
+                )}
+              </div>
+
+              {/* Separator - Keep hidden on very small screens to save space */}
+              <div className="hidden sm:block w-px h-6 bg-textsecondary/20" />
+
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       </div>

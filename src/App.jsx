@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import AuthPage from "./components/auth/AuthPage";
 import Contact from "./components/Contact";
 import Features from "./components/Features";
 import Footer from "./components/Footer";
@@ -26,6 +27,7 @@ function App() {
                 </>
               }
             />
+            <Route path="/auth" element={<AuthPage />} />
             <Route path="/projects" element={<Projects />} />
           </Routes>
         </main>

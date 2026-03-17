@@ -65,7 +65,7 @@ export default function Contact() {
       /* Section Background: bg-primary (Light) | dark:bg-secondary (Dark) */
       className="py-24 bg-primary dark:bg-secondary transition-colors duration-500"
     >
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="max-w-2xl mx-auto px-6">
         {/* Header Animation */}
         <div className="text-center mb-12 animate-fade-in-up">
           <h2 className="text-4xl font-extrabold text-textmain dark:text-textprimary">

@@ -49,7 +49,7 @@ export default function Projects() {
 
   return (
     <div className="min-h-screen py-24 bg-gray-50 dark:bg-gray-900 transition-colors overflow-hidden">
-      <div className="max-w-450 mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         {/* 1. Header Animation */}
         <header className="mb-12 animate-fade-in-up">
           <h1 className="text-4xl font-extrabold text-gray-900 dark:text-textprimary">

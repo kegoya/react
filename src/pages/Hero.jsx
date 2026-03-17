@@ -2,7 +2,7 @@ export default function Hero() {
   return (
     /* bg-primary (white) | dark:bg-secondary (#0f172a) */
     <section className="relative bg-primary dark:bg-secondary transition-colors duration-500">
-      <div className="max-w-450 mx-auto px-6 py-16 lg:flex lg:items-center lg:gap-12">
+      <div className="max-w-7xl mx-auto px-6 py-16 lg:flex lg:items-center lg:gap-12">
         {/* Text Content */}
         <div className="lg:w-1/2 text-center lg:text-left">
           {/* text-textmain (#0f172a) | dark:text-textprimary (#f8fafc) */}
